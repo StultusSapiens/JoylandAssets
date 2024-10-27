@@ -195,23 +195,26 @@
 }
 
 
-/* Progress Bars - Film Noir Style */
+/* Progress Bars - Slim Film Noir Style */
 #playerHP, #fearResistance, #clueProgress {
     -webkit-appearance: none;
     appearance: none;
-    width: 5px;
+    width: 200px;
+    height: 8px; /* Reduced height */
+    margin: 0; /* Removed margins */
     background: 
         repeating-linear-gradient(
             45deg,
             rgba(0, 0, 0, 0.2),
-            rgba(0, 0, 0, 0.2) 10px,
-            rgba(0, 0, 0, 0.3) 10px,
-            rgba(0, 0, 0, 0.3) 20px
+            rgba(0, 0, 0, 0.2) 5px, /* Reduced pattern size */
+            rgba(0, 0, 0, 0.3) 5px,
+            rgba(0, 0, 0, 0.3) 10px
         );
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.5),
-        0 1px 2px rgba(255, 255, 255, 0.1);
+        inset 0 1px 2px rgba(0, 0, 0, 0.5),
+        0 1px 1px rgba(255, 255, 255, 0.1);
+    vertical-align: middle; /* Align with text */
 }
 
 /* Progress bar fill styles */
@@ -262,12 +265,12 @@
         repeating-linear-gradient(
             45deg,
             rgba(0, 0, 0, 0.2),
-            rgba(0, 0, 0, 0.2) 10px,
-            rgba(0, 0, 0, 0.3) 10px,
-            rgba(0, 0, 0, 0.3) 20px
+            rgba(0, 0, 0, 0.2) 5px,
+            rgba(0, 0, 0, 0.3) 5px,
+            rgba(0, 0, 0, 0.3) 10px
         );
     border-radius: 0;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Firefox specific styles */
@@ -298,46 +301,38 @@
     );
 }
 
-/* Progress Bar Labels - Add atmosphere with custom styling */
-#playerHP::before,
-#fearResistance::before,
-#clueProgress::before {
-    content: attr(value) '%';
-    position: absolute;
-    right: -45px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-}
-
-/* Progress Bar Container Styling */
-progress {
-    position: relative;
-    display: inline-block;
-}
-
-/* Add hover effect for interactive feel */
-progress:hover::-webkit-progress-value {
-    filter: brightness(1.2);
-    transition: filter 0.3s ease;
-}
-
 /* Low HP Warning Effect */
 @keyframes lowHPPulse {
-    0% { box-shadow: 0 0 5px rgba(139, 0, 0, 0.5); }
-    50% { box-shadow: 0 0 15px rgba(139, 0, 0, 0.8); }
-    100% { box-shadow: 0 0 5px rgba(139, 0, 0, 0.5); }
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.5); }
+    100% { filter: brightness(1); }
 }
 
-#playerHP[value^="2"]::-webkit-progress-value,
-#playerHP[value^="1"]::-webkit-progress-value {
-    animation: lowHPPulse 2s infinite;
+#playerHP[value="20"]::-webkit-progress-value,
+#playerHP[value="19"]::-webkit-progress-value,
+#playerHP[value="18"]::-webkit-progress-value,
+#playerHP[value="17"]::-webkit-progress-value,
+#playerHP[value="16"]::-webkit-progress-value,
+#playerHP[value="15"]::-webkit-progress-value,
+#playerHP[value="14"]::-webkit-progress-value,
+#playerHP[value="13"]::-webkit-progress-value,
+#playerHP[value="12"]::-webkit-progress-value,
+#playerHP[value="11"]::-webkit-progress-value,
+#playerHP[value="10"]::-webkit-progress-value,
+#playerHP[value="9"]::-webkit-progress-value,
+#playerHP[value="8"]::-webkit-progress-value,
+#playerHP[value="7"]::-webkit-progress-value,
+#playerHP[value="6"]::-webkit-progress-value,
+#playerHP[value="5"]::-webkit-progress-value,
+#playerHP[value="4"]::-webkit-progress-value,
+#playerHP[value="3"]::-webkit-progress-value,
+#playerHP[value="2"]::-webkit-progress-value,
+#playerHP[value="1"]::-webkit-progress-value {
+    animation: lowHPPulse 1s infinite;
 }
 
-/* Progress Wrapper for better spacing */
-progress + progress {
-    margin-top: 15px;
+/* Progress Container for alignment */
+progress {
+    display: inline-block;
+    vertical-align: middle;
 }
